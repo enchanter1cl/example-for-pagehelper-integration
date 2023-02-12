@@ -2,6 +2,7 @@ package com.erato.exampleforpagehelperintegration.service;
 
 import com.erato.exampleforpagehelperintegration.entity.Brand;
 import com.erato.exampleforpagehelperintegration.vo.BrandsPageResp;
+import com.erato.exampleforpagehelperintegration.vo.RequiredBrandPageResp;
 import com.github.pagehelper.PageInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,9 +34,16 @@ public interface BrandService {
      */
     BrandsPageResp queryAllByPage(int page, int pageSize);
     
-//
-//    PageInfo<Brand> queryByPage(Brand brand, Integer page, Integer pageSize);
-//
+    /**
+     * Query some items with uncertain conditions, then page them
+     *
+     * @param brand  pojo who carrying conditions
+     * @param page default 1
+     * @param pageSize default 5
+     * @return requiredBrandPageResp
+     */
+    RequiredBrandPageResp queryByPage(Brand brand, int page, int pageSize);
+
     
     /**
      * 通过ID查询单条数据

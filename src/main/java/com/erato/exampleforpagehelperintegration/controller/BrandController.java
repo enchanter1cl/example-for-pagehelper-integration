@@ -40,22 +40,31 @@ public class BrandController {
         return result;
     }
     
-//    /**
-//     * Query some items with uncertain conditions, then page them
-//     *
-//     * @param page default 1
-//     * @param pageSize default 5
-//     * @return brand list
-//     */
-//    public MyRespEnt<RequiredBrandPageResp> queryByPage(
-//            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
-//            @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize
-//    ) {
-//        Brand brand = new Brand();
-//        //List<Brand> brands = brandService.queryByPage(brand, page, pageSize);
-//        //return ResponseEntity.ok(brands);
-//        return null;
-//    }
+    /**
+     * Query some items with uncertain conditions, then page them
+     *
+     * @param name condition
+     * @param firstLetter condition
+     * @param sort condition
+     * @param page default 1
+     * @param pageSize default 5
+     * @return requiredBrandPageResp
+     */
+    public MyRespEnt<RequiredBrandPageResp> queryByPage(
+            @RequestParam String name,
+            @RequestParam String firstLetter,
+            @RequestParam Integer sort,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+            @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize
+    ) {
+        Brand brand = new Brand();
+        brand.setName(name);
+        brand.setFirstLetter(firstLetter);
+        brand.setSort(sort);
+        RequiredBrandPageResp brandPageResp = brandService.queryByPage(brand, page, pageSize);
+        MyRespEnt myRespEnt = MyRespEnt.ok().setData(brandPageResp);
+        return myRespEnt;
+    }
 
     /**
      * 通过主键查询单条数据

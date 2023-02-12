@@ -4,6 +4,7 @@ import com.erato.exampleforpagehelperintegration.entity.Brand;
 import com.erato.exampleforpagehelperintegration.dao.BrandDao;
 import com.erato.exampleforpagehelperintegration.service.BrandService;
 import com.erato.exampleforpagehelperintegration.vo.BrandsPageResp;
+import com.erato.exampleforpagehelperintegration.vo.RequiredBrandPageResp;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,11 @@ public class BrandServiceImpl implements BrandService {
         brandsPageResp.setBrands(brands);
     
         return brandsPageResp;
+    }
+    
+    @Override
+    public RequiredBrandPageResp queryByPage(Brand brand, int page, int pageSize) {
+        return null;
     }
     
     
