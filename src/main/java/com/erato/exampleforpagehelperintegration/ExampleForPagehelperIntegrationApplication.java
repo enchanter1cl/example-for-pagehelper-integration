@@ -21,6 +21,9 @@ public class ExampleForPagehelperIntegrationApplication implements CommandLineRu
         SpringApplication.run(ExampleForPagehelperIntegrationApplication.class, args);
     }
     
+    
+    /* Official Example from https://github.com/pagehelper/Mybatis-PageHelper */
+    
     /* This Application class implements Spring Boot’s CommandLineRunner, which means it will execute the run() method after the application context is loaded.
     * https://spring.io/guides/gs/relational-data-access/
     */
