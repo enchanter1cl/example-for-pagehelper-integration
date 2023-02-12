@@ -3,12 +3,10 @@ package com.erato.exampleforpagehelperintegration.service.impl;
 import com.erato.exampleforpagehelperintegration.entity.Brand;
 import com.erato.exampleforpagehelperintegration.dao.BrandDao;
 import com.erato.exampleforpagehelperintegration.service.BrandService;
+import com.erato.exampleforpagehelperintegration.vo.BrandsPageResp;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -25,9 +23,15 @@ public class BrandServiceImpl implements BrandService {
     private BrandDao brandDao;
     
     @Override
-    public List<Brand> queryAllByPage(int page, int pageSize) {
-        PageHelper.startPage(page, pageSize);
-        return brandDao.selectAll();
+    public BrandsPageResp queryAllByPage(int page, int pageSize) {
+        Page<Object> startPage = PageHelper.startPage(page, pageSize);
+        List<Brand> brands = brandDao.selectAll();
+    
+        BrandsPageResp brandsPageResp = new BrandsPageResp();
+        brandsPageResp.setTotal(((Page) brands).getTotal());
+        brandsPageResp.setBrands(brands);
+    
+        return brandsPageResp;
     }
     
     

@@ -2,8 +2,9 @@ package com.erato.exampleforpagehelperintegration.controller;
 
 import com.erato.exampleforpagehelperintegration.entity.Brand;
 import com.erato.exampleforpagehelperintegration.service.BrandService;
+import com.erato.exampleforpagehelperintegration.vo.BrandsPageResp;
+import com.erato.exampleforpagehelperintegration.vo.MyRespEnt;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,11 +31,14 @@ public class BrandController {
      * @return brand list
      */
     @GetMapping
-    public ResponseEntity<List<Brand>> queryAllByPage(
+    public MyRespEnt<List> queryAllByPage(
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
             @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize) {
-        List<Brand> brands = brandService.queryAllByPage(page, pageSize);
-        return ResponseEntity.ok(brands);
+        BrandsPageResp brandPageResp = brandService.queryAllByPage(page, pageSize);
+    
+    
+        MyRespEnt result = MyRespEnt.ok().setData(brandPageResp);
+        return result;
     }
     
 //    /**
@@ -62,6 +66,13 @@ public class BrandController {
     @GetMapping("{id}")
     public ResponseEntity<Brand> queryById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(this.brandService.queryById(id));
+    }
+    
+    @GetMapping("/m1/{id}")
+    public MyRespEnt queryByIdM1(@PathVariable("id") Long id) {
+        Brand brand = brandService.queryById(id);
+        MyRespEnt result = MyRespEnt.ok().setData(brand);
+        return result;
     }
     
 }

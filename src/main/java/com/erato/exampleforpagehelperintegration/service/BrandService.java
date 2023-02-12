@@ -1,6 +1,7 @@
 package com.erato.exampleforpagehelperintegration.service;
 
 import com.erato.exampleforpagehelperintegration.entity.Brand;
+import com.erato.exampleforpagehelperintegration.vo.BrandsPageResp;
 import com.github.pagehelper.PageInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,7 +25,14 @@ public interface BrandService {
 //     */
 //    Page<Brand> queryByPage(Brand brand, PageRequest pageRequest);
     
-    List<Brand> queryAllByPage(int page, int pageSize);
+    /**
+     * Query all the items, then page them.
+     * @param page current page
+     * @param pageSize number of items per page
+     * @return brandPageResp
+     */
+    BrandsPageResp queryAllByPage(int page, int pageSize);
+    
 //
 //    PageInfo<Brand> queryByPage(Brand brand, Integer page, Integer pageSize);
 //
