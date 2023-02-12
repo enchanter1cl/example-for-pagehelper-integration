@@ -4,6 +4,7 @@ import com.erato.exampleforpagehelperintegration.entity.Brand;
 import com.erato.exampleforpagehelperintegration.service.BrandService;
 import com.erato.exampleforpagehelperintegration.vo.BrandsPageResp;
 import com.erato.exampleforpagehelperintegration.vo.MyRespEnt;
+import com.erato.exampleforpagehelperintegration.vo.RequiredBrandPageResp;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class BrandController {
      * @return brand list
      */
     @GetMapping
-    public MyRespEnt<List> queryAllByPage(
+    public MyRespEnt<BrandsPageResp> queryAllByPage(
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
             @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize) {
         BrandsPageResp brandPageResp = brandService.queryAllByPage(page, pageSize);
@@ -46,15 +47,16 @@ public class BrandController {
 //     * @param pageSize default 5
 //     * @return brand list
 //     */
-//    public ResponseEntity<List<Brand>> queryByPage(
+//    public MyRespEnt<RequiredBrandPageResp> queryByPage(
 //            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
 //            @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize
 //    ) {
 //        Brand brand = new Brand();
-//        List<Brand> brands = brandService.queryByPage(brand, page, pageSize);
-//        return ResponseEntity.ok(brands);
+//        //List<Brand> brands = brandService.queryByPage(brand, page, pageSize);
+//        //return ResponseEntity.ok(brands);
+//        return null;
 //    }
-//
+
     /**
      * 通过主键查询单条数据
      *
