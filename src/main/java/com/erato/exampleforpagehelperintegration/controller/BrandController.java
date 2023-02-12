@@ -37,22 +37,22 @@ public class BrandController {
         return ResponseEntity.ok(brands);
     }
     
-    /**
-     * Query some items with uncertain conditions, then page them
-     *
-     * @param page default 1
-     * @param pageSize default 5
-     * @return brand list
-     */
-    public ResponseEntity<List<Brand>> queryByPage(
-            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
-            @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize
-    ) {
-        Brand brand = new Brand();
-        List<Brand> brands = brandService.queryByPage(brand, page, pageSize);
-        return ResponseEntity.ok(brands);
-    }
-    
+//    /**
+//     * Query some items with uncertain conditions, then page them
+//     *
+//     * @param page default 1
+//     * @param pageSize default 5
+//     * @return brand list
+//     */
+//    public ResponseEntity<List<Brand>> queryByPage(
+//            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+//            @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize
+//    ) {
+//        Brand brand = new Brand();
+//        List<Brand> brands = brandService.queryByPage(brand, page, pageSize);
+//        return ResponseEntity.ok(brands);
+//    }
+//
     /**
      * 通过主键查询单条数据
      *
