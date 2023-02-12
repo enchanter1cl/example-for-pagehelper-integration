@@ -35,8 +35,6 @@ public class BrandController {
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
             @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize) {
         BrandsPageResp brandPageResp = brandService.queryAllByPage(page, pageSize);
-    
-    
         MyRespEnt result = MyRespEnt.ok().setData(brandPageResp);
         return result;
     }
@@ -67,13 +65,5 @@ public class BrandController {
     public ResponseEntity<Brand> queryById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(this.brandService.queryById(id));
     }
-    
-    @GetMapping("/m1/{id}")
-    public MyRespEnt queryByIdM1(@PathVariable("id") Long id) {
-        Brand brand = brandService.queryById(id);
-        MyRespEnt result = MyRespEnt.ok().setData(brand);
-        return result;
-    }
-    
 }
 
