@@ -3,7 +3,6 @@ package com.erato.exampleforpagehelperintegration.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 
 
@@ -48,4 +47,3 @@ public class Brand implements Serializable {
     private Integer sort;
     
 }
-
