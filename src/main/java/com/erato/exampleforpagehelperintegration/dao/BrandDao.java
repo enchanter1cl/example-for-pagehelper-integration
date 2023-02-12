@@ -18,6 +18,8 @@ public interface BrandDao {
     
     List<Brand> selectAll();
     
+    List<Brand> selectRequired(Brand brand);
+    
     /**
      * 通过ID查询单条数据
      *

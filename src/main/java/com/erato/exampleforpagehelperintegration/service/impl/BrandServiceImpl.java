@@ -37,7 +37,14 @@ public class BrandServiceImpl implements BrandService {
     
     @Override
     public RequiredBrandPageResp queryByPage(Brand brand, int page, int pageSize) {
-        return null;
+        PageHelper.startPage(page, pageSize);
+        List<Brand> brands = brandDao.selectRequired(brand);
+    
+        RequiredBrandPageResp requiredBrandPageResp = new RequiredBrandPageResp();
+        requiredBrandPageResp.setTotal(((Page) brands).getTotal());
+        requiredBrandPageResp.setBrands(brands);
+        
+        return requiredBrandPageResp;
     }
     
     

@@ -18,6 +18,23 @@
         from pms_brand
     </select>
 
+    <!--select required-->
+    <select id="selectRequired" resultMap="BrandMap">
+        select *
+        from pms_brand
+        <where>
+            <if test="name != null and name != ''">
+                and name like #{name}
+            </if>
+            <if test="firstLetter != null and firstLetter != ''">
+                and first_letter = #{firstLetter}
+            </if>
+            <if test="sort != null">
+                and sort = #{sort}
+            </if>
+        </where>
+    </select>
+
     <!--查询单个-->
     <select id="queryById" resultMap="BrandMap">
         select brand_id,

@@ -50,10 +50,11 @@ public class BrandController {
      * @param pageSize default 5
      * @return requiredBrandPageResp
      */
+    @GetMapping("/limitBy")
     public MyRespEnt<RequiredBrandPageResp> queryByPage(
-            @RequestParam String name,
-            @RequestParam String firstLetter,
-            @RequestParam Integer sort,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String firstLetter,
+            @RequestParam(required = false) Integer sort,
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
             @RequestParam(value = "page-size", required = false, defaultValue = "5") int pageSize
     ) {
