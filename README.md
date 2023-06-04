@@ -18,7 +18,7 @@ Integrate mybatis' paging plugin 'PageHelper' into Spring Boot.
 
 2 Query some items with uncertain conditions, then page them
 
-(See Domain model in `/sql` directory)
+(See Domain model in `/sql` directory) 创建表和数据的 sql 语句请见文件夹 `/sql`。
 
 ## Extended Reading 延伸阅读
 
